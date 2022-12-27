@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CountryType } from "./types";
 import axios from "axios";
 import Country from "./Country";
+import Loading from "./Loading";
 const App = () => {
   const [datas, setDatas] = useState<CountryType[]>([]);
   console.log(datas);
@@ -24,11 +25,11 @@ const App = () => {
   };
   return (
     <div>
-      {loading
-        ? "...loading"
-        : datas.map((country) => {
-            return <Country key={country.name.official} country={country} />;
-          })}
+      <Loading loading={loading}>
+        {datas.map((country) => {
+          return <Country key={country.name.official} country={country} />;
+        })}
+      </Loading>
     </div>
   );
 };
