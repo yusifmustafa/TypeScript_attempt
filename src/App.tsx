@@ -9,10 +9,14 @@ const App = () => {
     getDatas();
   }, []);
   const getDatas = async () => {
-    const { data } = await axios.get<CountryType[]>(
-      "https://restcountries.com/v3.1/all"
-    );
-    setDatas(data);
+    try {
+      const { data } = await axios.get<CountryType[]>(
+        "https://restcountries.com/v3.1/all"
+      );
+      setDatas(data);
+    } catch {
+      console.log("Api'den data gelen zaman xeta emele geldi");
+    }
   };
   return (
     <div>

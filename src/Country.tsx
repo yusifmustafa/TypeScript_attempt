@@ -1,8 +1,18 @@
- import React from 'react'
+ import React, { FunctionComponent } from 'react';
+import { CountryType } from './types';
+
+ interface ICountryType{
+    country:CountryType;
+ }
  
- const Country = () => {
+ const Country:FunctionComponent<ICountryType> = (props) => {
+    const {country} = props;
    return (
-     <div>Country</div>
+     <div>
+        {
+           <p>{country.car.side}</p>
+        }
+     </div>
    )
  }
  
